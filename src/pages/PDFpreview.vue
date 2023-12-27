@@ -45,7 +45,7 @@
                 <div id="generateThumbPreview"
                     class="w-full max-w-[160px] flex flex-col gap-y-3 overflow-hidden overflow-y-auto text-white">
                     <div class="w-40 relative z-0" v-for="(thumbnail, i) in thumbnails" :key="i">
-                        <a :href="thumbnail" @click.prevent="randomPage(i + 1)" data-fancybox="PDFPreview"
+                        <a :href="thumbnail" @click.prevent="randomPage(i + 1)"
                             class=" min-h-[40px] bg-purple-400 block">
                             <img :src="thumbnail" class="w-full" />
                             <span class="absolute z-10 top-2 right-2 bg-primary-800 shadow-md shadow-gray-900 w-7 h-7 flex justify-center items-center rounded-full">{{ i + 1 }}</span>
@@ -98,7 +98,6 @@ export default {
             pdfPreview.style.height = bodyHeight + "px";
             pdfPreviewCover.style.height = bodyHeight + "px";
             generateThumbPreview.style.height = bodyHeight + "px";
-            console.log("pageHeight");
         }
         pageHeight();
         window.addEventListener('resize', function () {
@@ -212,7 +211,6 @@ export default {
             this.thumbnails = await Promise.all(promises);
             this.loading = false;
             this.loadingText = null;
-            console.log("thumbnails", this.thumbnails);
         },
 
 
@@ -256,7 +254,6 @@ export default {
         },
 
         randomPage(randomPage) {
-            console.log("randomPage", randomPage);
             this.loading = true;
             if (this.pdf.numPages <= randomPage-1) {
                 randomPage = this.pdf.numPages;
